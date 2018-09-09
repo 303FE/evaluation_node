@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const teacherScheme = new Schema({
     name: String,
     password: String,
-    collegeId: ObjectId,
+    collegeId: {
+        type: ObjectId,
+        ref: 'college'
+    },
 })
 
-module.exports = mongoose.model('Teacher', teacherScheme)
+module.exports = mongoose.model('teacher', teacherScheme)
