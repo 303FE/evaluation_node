@@ -24,6 +24,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Auth 认证
+app.use(function (req, res, next) {
+  req.headers.authorization = req.headers.authorization || ''
+  require('./util/authHelper')
+    .doAuth(req.path, req.headers.authorization)
+    .then(res =>{
+      if (res) {
+        next()
+      } else throw null
+    })
+    .catch(() => {
+      res.send('非法访问')
+    })
+})
+
 app.use('/', index);
 app.use('/users', users);
 
