@@ -11,6 +11,4 @@ const Schema = mongoose.Schema({
   startTime: String,
   endTime: String
 })
-
-Schema.statics = {}
 module.exports = mongoose.model('paper', Schema)

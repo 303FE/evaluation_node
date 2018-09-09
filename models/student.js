@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose')
 const ObjectId = mongoose.Schema.ObjectId
 const Schema = mongoose.Schema({
+  num: String,
   name: String,
   password: String,
   collegeId: {
