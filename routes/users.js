@@ -7,14 +7,13 @@ router.get('/', function(req, res, next) {
   userService
     .login({type: 2, num: '159001015', password: '123'})
     .then(rel =>{
-      console.log(rel);
       if (rel) {
         res.send(resultHelper.success(rel, '成功'))
       } else {
-        res.send(resultHelper.success({}, '账号或密码错误'))
+        res.send(resultHelper.failed( '账号或密码错误'))
       }
     })
-    .catch(error =>{
+    .catch(() =>{
       res.send(resultHelper.failed('系统错误'))
     })
 
