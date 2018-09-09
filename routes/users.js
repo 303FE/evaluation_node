@@ -4,11 +4,6 @@ const Admin = require('../models/admin')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  // var boen = new Admin({
-  //   name: 'boen',
-  //   password: '123456'
-  // })
-  // boen.save()
  Admin.login({name: 'boen',
     password: '123456'
   }, function (err, con) {
