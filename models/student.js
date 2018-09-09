@@ -19,9 +19,4 @@ const Schema = mongoose.Schema({
   }]
 })
 
-Schema.statics = {
-  login: function ({name, password}, cb) {
-    return this.findOne({name, password}, cb)
-  }
-}
 module.exports = mongoose.model('student', Schema)

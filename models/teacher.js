@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const teacherScheme = new Schema({
+    num: String,
     name: String,
     password: String,
     collegeId: {
@@ -9,5 +10,6 @@ const teacherScheme = new Schema({
         ref: 'college'
     },
 })
+
 
 module.exports = mongoose.model('teacher', teacherScheme)

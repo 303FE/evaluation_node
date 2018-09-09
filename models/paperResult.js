@@ -21,4 +21,5 @@ const paperResultSchema = new Schema({
     type: Number,
 })
 
+
 module.exports = mongoose.model('paperResult', paperResultSchema)
