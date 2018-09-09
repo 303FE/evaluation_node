@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose')
 const ObjectId = mongoose.Schema.ObjectId
 const Schema = mongoose.Schema({
+  num: String,
   name: String,
   password: String,
   collegeId: {
@@ -18,10 +19,4 @@ const Schema = mongoose.Schema({
     }
   }]
 })
-
-Schema.statics = {
-  login: function ({name, password}, cb) {
-    return this.findOne({name, password}, cb)
-  }
-}
 module.exports = mongoose.model('student', Schema)

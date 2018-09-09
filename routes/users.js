@@ -1,18 +1,23 @@
 var express = require('express');
 var router = express.Router();
-const Admin = require('../models/admin')
-// const college = require('../models/college')
-// const course = require('../models/course')
-// const student = require('../models/student')
-// const paper = require('../models/paper')
+const userService = require('../services/userService')
+const resultHelper = require('../util/resultHelper')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
- Admin.login({name: 'boen',
-    password: '123456'
-  }, function (err, con) {
-   console.log(con);
-   res.send(con);
- })
+  userService
+    .login({type: 2, num: '159001015', password: '123'})
+    .then(rel =>{
+      console.log(rel);
+      if (rel) {
+        res.send(resultHelper.success(rel, '成功'))
+      } else {
+        res.send(resultHelper.success({}, '账号或密码错误'))
+      }
+    })
+    .catch(error =>{
+      res.send(resultHelper.failed('系统错误'))
+    })
+
 });
 
 module.exports = router;
