@@ -6,8 +6,8 @@ const teacherCourseModel = require('../models/teacherCourse')
  * @param courseId
  * @returns {*}
  */
-const createTeacherCourse = ({tId, cId}) =>
-    teacherCourseModel.create({tId, cId})
+const createTeacherCourse = ({teacher, course}) =>
+    teacherCourseModel.create({teacher, course})
 
 
 /**
@@ -15,9 +15,9 @@ const createTeacherCourse = ({tId, cId}) =>
  * @param cId
  * @returns {Promise<any>}
  */
-const removeTeacherCourseByCourseId = (cId) => {
+const removeTeacherCourseByCourseId = (course) => {
     return new Promise((resolve, reject) => {
-        teacherCourseModel.deleteMany({cId}).exec((err) => {
+        teacherCourseModel.deleteMany({course}).exec((err) => {
             err? reject(err) : resolve()
         })
     })
@@ -28,9 +28,9 @@ const removeTeacherCourseByCourseId = (cId) => {
  * @param tId
  * @returns {Promise<any>}
  */
-const getCourseIdByTeacherId = ({tId}) => {
+const getCourseIdByTeacherId = ({teacher}) => {
     return new Promise((resolve, reject) => {
-        teacherCourseModel.find({tId}, 'cId').exec((err, rel) => {
+        teacherCourseModel.find({teacher}, 'course').exec((err, rel) => {
             err? reject(err) : resolve(rel)
         })
     })
@@ -41,9 +41,9 @@ const getCourseIdByTeacherId = ({tId}) => {
  * @param courseId
  * @returns {Promise<any>}
  */
-const getTeacherIdByCourseId = ({cId}) => {
+const getTeacherIdByCourseId = ({course}) => {
     return new Promise((resolve, reject) => {
-        teacherCourseModel.find({cId},'tId').exec((err, rel) => {
+        teacherCourseModel.find({course},'teacher').exec((err, rel) => {
             err? reject(err) : resolve(rel)
         })
     })

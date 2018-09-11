@@ -15,16 +15,16 @@ const getPaperResultByUserId = ({userId}) => {
 
 
 /**
- * 根据userId，teacherId, courseId, type生成的status为false的评价结果
+ * 根据userId，teacher, course, type生成的status为false的评价结果
  * 在生成一张测试卷的时候，调用此接口为学生和教师生成对应的status为false的评价结果
  * @param userId
- * @param teacherId
- * @param courseId
+ * @param teacher
+ * @param course
  * @param type
  * @returns {*}
  */
-const createPaperResult = ({userId, teacherId, courseId, type}) =>
-    paperResultModel.create({userId, teacherId, courseId, type, grade: 0, suggest: '', status: false})
+const createPaperResult = ({userId, teacher, course, type}) =>
+    paperResultModel.create({userId, teacher, course, type, grade: 0, suggest: '', status: false})
 
 /**
  * 修改评价结果

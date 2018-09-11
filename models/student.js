@@ -9,11 +9,11 @@ const Schema = mongoose.Schema({
     ref: 'college'
   },
   courses:[{
-    courseId: {
+    course: {
       type: ObjectId,
       ref: 'course'
     },
-    teacherId: {
+    teacher: {
       type: ObjectId,
       ref: 'teacher'
     }

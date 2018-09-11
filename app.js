@@ -9,6 +9,7 @@ require('./db')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var admin = require('./routes/admin')
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Auth 认证
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
   req.headers.authorization = req.headers.authorization || ''
   require('./util/authHelper')
     .doAuth(req.path, req.headers.authorization)
@@ -37,10 +38,11 @@ app.use(function (req, res, next) {
     .catch(() => {
       res.send('非法访问')
     })
-})
+})*/
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
