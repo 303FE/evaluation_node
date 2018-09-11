@@ -5,6 +5,9 @@ const questionService = require('../services/questionService')
 const collegeService = require('../services/collegeService')
 const courseService = require('../services/courseService')
 const paperService = require('../services/paperService')
+const paperResultService = require('../services/paperResultService')
+const teacherCourseService = require('../services/teacherCourseService')
+
 
 
 const resultHelper = require('../util/resultHelper')
@@ -38,7 +41,7 @@ router.get('/', function(req, res, next) {
             console.log(rel)
             res.send(rel)
     })*/
-    paperService.createPaper({
+    /*paperService.createPaper({
         title: '试卷2',
         questions: ['5b94e5992e313e08949cf646','5b94f41be3301e24500fd3fa','5b94f43e18637c2fd884c5f3'],
         endTime: '',
@@ -46,10 +49,31 @@ router.get('/', function(req, res, next) {
         type: 0,
         typeId: 1,
     }).
-    then(rel => {
-        console.log(rel)
-        res.send(rel)
+        then(rel => {
+            console.log(rel)
+            res.send(rel)
+        })*/
+    /*paperResultService.createPaperResult({userId:'5b9499af02b1aa1d400a0fab', teacherId:'5b95d77ee17cf02cf8f30409', courseId:'5b95d8842e4ec52b243c0f64', type: 0}).
+        then(rel=> {
+            console.log(rel)
+            res.send(rel)
+    })*/
+    /*paperResultService.updatePaperResult({_id: '5b95da6867e9e720bc7f7cdc', grade: 80, suggest: '张老师牛逼'}).
+        then(rel=> {
+            console.log(rel)
+            res.send(rel)
+    })*/
+    /*courseService.createCourse({name: '人机交互界面设计'}).
+        then((rel) => {
+            console.log(rel)
+            res.send(rel)
+    })*/
+    teacherCourseService.createTeacherCourse({tId: '5b95d77ee17cf02cf8f30409', cId: '5b95d81f0611720a2c6a3d75'}).
+        then(rel => {
+            console.log(rel)
+            res.send(rel)
     })
+
 });
 
 router.post('/changePassword', function(req, res) {

@@ -29,6 +29,20 @@ const getAllPapers = () => {
     })
 }
 
+/**
+ * 通过id获取试卷
+ * 学生or 教师通过id 获取试卷
+ * @param _id
+ * @returns {Promise<any>}
+ */
+const getPaperById = ({_id}) => {
+    return new Promise((resolve, reject) => {
+        paperModel.find({_id}).exec((err, rel) => {
+            err? reject(err) : resolve(rel)
+        })
+    })
+}
+
 module.exports = {
     createPaper,
     removePaper,
