@@ -7,6 +7,7 @@ const courseService = require('../services/courseService')
 const paperService = require('../services/paperService')
 const paperResultService = require('../services/paperResultService')
 const teacherCourseService = require('../services/teacherCourseService')
+const studentService = require('../services/studentService')
 
 
 
@@ -53,12 +54,12 @@ router.get('/', function(req, res, next) {
             console.log(rel)
             res.send(rel)
         })*/
-    /*paperResultService.createPaperResult({userId:'5b9499af02b1aa1d400a0fab', teacherId:'5b95d77ee17cf02cf8f30409', courseId:'5b95d8842e4ec52b243c0f64', type: 0}).
+    /*paperResultService.js.createPaperResult({userId:'5b9499af02b1aa1d400a0fab', teacherId:'5b95d77ee17cf02cf8f30409', courseId:'5b95d8842e4ec52b243c0f64', type: 0}).
         then(rel=> {
             console.log(rel)
             res.send(rel)
     })*/
-    /*paperResultService.updatePaperResult({_id: '5b95da6867e9e720bc7f7cdc', grade: 80, suggest: '张老师牛逼'}).
+    /*paperResultService.js.updatePaperResult({_id: '5b95da6867e9e720bc7f7cdc', grade: 80, suggest: '张老师牛逼'}).
         then(rel=> {
             console.log(rel)
             res.send(rel)
@@ -98,4 +99,8 @@ router.post('/changePassword', function(req, res) {
 
 });
 
+router.get('/stu', function (req, res) {
+  studentService.getCourseList('5b94bbf0e28c8f35c0a98437')
+  res.send('1')
+})
 module.exports = router;
