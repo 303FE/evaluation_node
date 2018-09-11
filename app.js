@@ -5,13 +5,14 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 
+// 数据库连接
 require('./db')
 
-
-
-var admin = require('./routes/admin')
 var index = require('./routes/index')
+var admin = require('./routes/admin')
 var user = require('./routes/user')
+var student = require('./routes/student')
+var teacher = require('./routes/teacher')
 var test = require('./routes/test')
 
 var app = express()
@@ -44,8 +45,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 })*/
 
 
-app.use('/admin', admin)
 app.use('/', index)
+app.use('/admin', admin)
+app.use('/teacher', teacher)
+app.use('/student', student)
 app.use('/user', user)
 app.use('/test', test)
 

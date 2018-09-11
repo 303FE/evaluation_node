@@ -1,6 +1,7 @@
 const adminModel = require('../models/admin')
 const studentModel = require('../models/student')
 const teacherModel = require('../models/teacher')
+const authHelper = require('../util/authHelper')
 const models = [studentModel, teacherModel, adminModel]
 
 /**
@@ -12,7 +13,7 @@ const models = [studentModel, teacherModel, adminModel]
 const login = ({type, num, password}) => {
   return new Promise((resolve, reject) => {
     models[type]
-      .findOne({ num, password })
+      .findOne({ num, password },{token: authHelper.createToken()})
       .exec((err, rel) => {
       rel?rel.password = '':null
       err?reject(err):resolve(rel)
@@ -38,8 +39,24 @@ const changePassword = ({type, id, password, newPass}) => {
   })
 }
 
+/**
+ * 退出登录
+ * @param type
+ * @param id
+ * @returns {Promise<any>}
+ */
+const loginOut = ({type, id}) => {
+  return new Promise((resolve, reject) => {
+    models[type]
+      .updateOne({ _id: id }, { token: authHelper.createToken()})
+      .exec((err, rel) => {
+        err?reject(err):resolve(rel.n>0)
+      })
+  })
+}
 
 module.exports = {
   login,
-  changePassword
+  changePassword,
+  loginOut
 }

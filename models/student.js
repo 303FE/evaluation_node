@@ -9,16 +9,20 @@ const Schema = mongoose.Schema({
     type: ObjectId,
     ref: 'college'
   },
-  courses:[{
-    course: {
+  teacherCourses:[{
       type: ObjectId,
-      ref: 'course'
-    },
-    teacher: {
-      type: ObjectId,
-      ref: 'teacher'
-    }
-  }]
+      ref: 'teacherCourse'
+    }]
+  // courses:[{
+  //   course: {
+  //     type: ObjectId,
+  //     ref: 'course'
+  //   },
+  //   teacher: {
+  //     type: ObjectId,
+  //     ref: 'teacher'
+  //   }
+  // }]
 })
 
 module.exports = mongoose.model('student', Schema)

@@ -26,6 +26,11 @@ const doAuth = (path, token) =>{
   })
 }
 
+const createToken = () => {
+  return Math.random()
+}
+
 module.exports = {
-  doAuth
+  doAuth,
+  createToken
 }
