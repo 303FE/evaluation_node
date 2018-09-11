@@ -4,16 +4,16 @@ const ObjectId = Schema.ObjectId
 
 const paperResultSchema = new Schema({
     status: Boolean,
-    paperId: {
+    paper: {
         type: ObjectId,
         ref: 'paper'
     },
     userId: String,
-    teacherId: {
+    teacher: {
         type: ObjectId,
         ref: 'teacher'
     },
-    courseId: {
+    course: {
         type: ObjectId,
         ref: 'course'
     },

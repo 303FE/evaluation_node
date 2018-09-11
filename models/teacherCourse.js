@@ -3,11 +3,11 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId
 
 const teacherCourseSchema = new Schema({
-    tId: {
+    teacher: {
         type: ObjectId,
         ref: 'teacher'
     },
-    cId: {
+    course: {
         type: ObjectId,
         ref: 'course'
     },
