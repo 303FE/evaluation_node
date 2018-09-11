@@ -14,7 +14,6 @@ var index = require('./routes/index')
 var user = require('./routes/user')
 var test = require('./routes/test')
 
-
 var app = express()
 
 // view engine setup
@@ -45,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 })*/
 
 
-app.use('/admin', admin);
+app.use('/admin', admin)
 app.use('/', index)
 app.use('/user', user)
 app.use('/test', test)

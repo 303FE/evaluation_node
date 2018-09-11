@@ -7,9 +7,16 @@ const paperResultModel = require('../models/paperResult')
  */
 const getPaperResultByUserId = ({userId}) => {
     return new Promise((resolve, reject) => {
-        paperResultModel.find({userId, status: false}).exec((err, rel) => {
-            err? reject(err) : resolve(rel)
-        });
+        paperResultModel
+            .find({userId, status: false})
+            .populate([
+                {path: 'paper', select: 'title'},
+                {path: 'teacher', select: 'name'},
+                {path: 'course', select: 'name'},
+            ])
+            .exec((err, rel) => {
+                err? reject(err) : resolve(rel)
+            })
     })
 }
 
