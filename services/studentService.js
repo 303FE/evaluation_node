@@ -48,9 +48,14 @@ const resetPassword = ids =>{
 const getCourseList = id => {
   return new Promise((resolve, reject) => {
     studentModel
-      .findOne({_id: id}, {courses: []})
-      .populate('courses.course', 'name')
-      .populate('courses.teacher', 'name')
+      .findOne({_id: id}, {teacherCourses: []})
+      .populate({
+        path: 'teacherCourses',
+        populate: {
+          path: 'teacher course',
+          select: 'name'
+        }
+      })
       .exec((err, res) => {
         err ? reject(err) : resolve(res)
       })
