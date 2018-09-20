@@ -9,17 +9,15 @@ const paperResultService = require('../services/paperResultService')
 const teacherCourseService = require('../services/teacherCourseService')
 const studentService = require('../services/studentService')
 const teacherService = require('../services/teacherService')
-
+const student = require('../models/student')
 
 
 const resultHelper = require('../util/resultHelper')
 
 router.get('/stu', function (req, res) {
-  studentService
-    .getCourseList('5b94bbf0e28c8f35c0a98437')
-    .then(rel => {
-      res.send(rel)
-    })
+  let stu = new student({teacherCourses: ["5b95fe55e284782a9062eab0","5b95fe55e284782a9062eab0"]})
+  // stu.
+  res.send(stu)
 
 })
 
