@@ -9,5 +9,7 @@ require('./college')(router)
 require('./paper')(router)
 // ==== 题目相关接口
 require('./question')(router)
+// === 评价结果相关接口
+require('./paperResult')(router)
 
 module.exports = router

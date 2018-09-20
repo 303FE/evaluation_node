@@ -13,16 +13,6 @@ const Schema = mongoose.Schema({
       type: ObjectId,
       ref: 'teacherCourse'
     }]
-  // courses:[{
-  //   course: {
-  //     type: ObjectId,
-  //     ref: 'course'
-  //   },
-  //   teacher: {
-  //     type: ObjectId,
-  //     ref: 'teacher'
-  //   }
-  // }]
 })
 
 module.exports = mongoose.model('student', Schema)

@@ -38,12 +38,12 @@ const getCourseIdByTeacherId = ({teacher}) => {
 
 /**
  * 通过 cId 获取 课程对应的 tId
- * @param courseId
+ * @param 参数可以是一个courseId 或者 courseId 数组
  * @returns {Promise<any>}
  */
-const getTeacherIdByCourseId = ({course}) => {
+const getTeacherIdByCourseId = (course) => {
     return new Promise((resolve, reject) => {
-        teacherCourseModel.find({course},'teacher').exec((err, rel) => {
+        teacherCourseModel.find({course: {$in: course}},'teacher').exec((err, rel) => {
             err? reject(err) : resolve(rel)
         })
     })

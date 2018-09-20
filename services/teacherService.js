@@ -61,10 +61,26 @@ const getPaperResultList = id => {
   })
 }
 
+/**
+ * 获取全校教师
+ * lp
+ * @returns {Promise<any>}
+ */
+const getAllTeacher = (condition) => {
+    return new Promise((resolve, reject) => {
+        teacherModel
+            .find(condition)
+            .exec((err, res) => {
+                err ? reject(err) : resolve(res)
+            })
+    })
+}
+
 
 module.exports = {
   insertTeachers,
   updateTeachers,
   getPaperResultList,
-  resetPassword
+  resetPassword,
+  getAllTeacher
 }

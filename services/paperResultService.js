@@ -22,16 +22,16 @@ const getPaperResultByUserId = ({userId}) => {
 
 
 /**
- * 根据userId，teacher, course, type生成的status为false的评价结果
- * 在生成一张测试卷的时候，调用此接口为学生和教师生成对应的status为false的评价结果
+ * 参数是一个 数组
+ * 在发布一张测试卷的时候，调用此接口为学生和教师生成对应的的评价结果
  * @param userId
  * @param teacher
  * @param course
  * @param type
  * @returns {*}
  */
-const createPaperResult = ({userId, teacher, course, type}) =>
-    paperResultModel.create({userId, teacher, course, type, grade: 0, suggest: '', status: false})
+const createPaperResult = (paperResults) =>
+    paperResultModel.create(paperResults)
 
 /**
  * 修改评价结果
@@ -49,8 +49,17 @@ const updatePaperResult = ({_id, grade, suggest}) => {
     })
 }
 
+const deletePaperResults = () => {
+    return new Promise((resolve, reject) => {
+        paperResultModel.deleteMany({}).exec((err, rel) => {
+            err? reject(err) : resolve(rel)
+        })
+    })
+}
+
 module.exports = {
     getPaperResultByUserId,
     createPaperResult,
-    updatePaperResult
+    updatePaperResult,
+    deletePaperResults
 }

@@ -73,10 +73,27 @@ const setCourses = (stus, courses) => {
   })
 }
 
+/**
+ * 获取学生
+ * lp
+ * @returns {Promise<any>}
+ */
+const getAllStus = (condition) => {
+  return new Promise((resolve, reject) => {
+    studentModel
+      .find(condition)
+      .populate('teacherCourses', 'teacher course -_id')
+      .exec((err, res) => {
+          err ? reject(err) : resolve(res)
+      })
+  })
+}
+
 module.exports = {
   insertStudents,
   updateStudents,
   getCourseList,
   setCourses,
-  resetPassword
+  resetPassword,
+  getAllStus
 }
